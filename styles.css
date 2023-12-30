@@ -1,3 +1,6 @@
+/* Inter (Medium 500) font import from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
 :root {
     --hofstra-blue: #12579a;
     --hofstra-yellow: #ffc309;
@@ -5,6 +8,45 @@
     /* --text-main:  */
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     background-color: var(--background-main-light);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 10px 180px 10px 180px;
+    width: 100%;
+    height: 15%;
+    background-color: var(--hofstra-blue);
+}
+
+.header-logo-container {
+    width: 400px;
+    height: 100%;
+}
+
+.header-logo-container p {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: var(--hofstra-yellow);
+}
+
+#first-title-header {
+    margin: 11px 0 7px 0;
+}
+
+.star-hpc-logo {
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    float: left;
+    width: 17%;
+    height: auto;
 }
