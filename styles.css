@@ -4,7 +4,7 @@
 :root {
     --hofstra-blue: #12579a;
     --hofstra-yellow: #ffc309;
-    --background-main-light: #f5fbff;
+    --main-bg-light: #f5fbff;
     /* --text-main:  */
 }
 
@@ -15,7 +15,7 @@
 }
 
 body{
-    background-color: var(--background-main-light);
+    background-color: var(--main-bg-light);
 }
 
 .header{
