@@ -1,52 +1,95 @@
-/* Inter (Medium 500) font import from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 :root {
-    --hofstra-blue: #12579a;
-    --hofstra-yellow: #ffc309;
-    --main-bg-light: #f5fbff;
-    /* --text-main:  */
+  --hofstra-blue: #12579a;
+  --hofstra-yellow: #ffc309;
+  --main-bg-light: #f5fbff;
+  --font-inter: 'Inter', sans-serif;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: var(--main-bg-light);
+body {
+  font-family: var(--font-inter);
+  background-color: var(--main-bg-light);
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 10px 180px 10px 180px;
-    width: 100%;
-    height: 15%;
-    background-color: var(--hofstra-blue);
+header {
+  background-color: var(--hofstra-blue);
+  color: var(--main-bg-light);
+  padding: 1rem 2%;
 }
 
-.header-logo-container {
-    width: 430px;
-    height: 100%;
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.header-logo-container p {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    color: var(--hofstra-yellow);
+.logo-container {
+  margin: 0 0 0 1rem;
+  color: var(--hofstra-yellow);
+  display: flex;
+  align-items: center;
 }
 
-#first-title-header {
-    margin: 12px 0 7px 0;
+.logo-container img {
+  height: 60px;
 }
 
-.star-hpc-logo {
-    margin: 0 10px 0 0;
-    cursor: pointer;
-    float: left;
-    width: 17%;
-    height: auto;
+.logo-text {
+  font-weight: bolder;
+  margin-left: 10px;
+  line-height: 1.2;
+}
+
+.title {
+  margin: 0 0 0 3rem;
+  color: var(--hofstra-yellow);
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+nav .nav-link {
+  color: var(--main-bg-light);
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: normal;
+}
+
+nav .nav-link:hover {
+  border-bottom: 2px solid var(--main-bg-light);
+  color: var(--hofstra-yellow);
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 880px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title {
+    margin: 0 0 0 1rem;
+  }
+
+  .logo-container {
+    margin-bottom: 0.5rem;
+  }
+
+  nav .nav-link {
+    display: block;
+    margin: 6px 0;
+  }
 }
