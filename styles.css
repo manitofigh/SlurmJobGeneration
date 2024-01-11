@@ -66,31 +66,132 @@ nav .nav-link {
 
 nav .nav-link:hover {
   border-bottom: 2px solid var(--main-bg-light);
-  color: var(--main-bg-light);
 }
 
 main {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px; 
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 880px) {
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+}
+
+.settings-container {
+  flex: 1;
+  max-width: calc(50% - 1rem); 
+  margin-bottom: 2rem; 
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap; /* wrap on small screens */
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.script-container {
+  flex: 1;
+  max-width: calc(50% - 1rem); 
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  position: relative;
+}
+
+#slurm-script {
+  white-space: pre-wrap;
+  word-break: break-all;
+  min-height: 150px;
+}
+
+#copy-button {
+  background: var(--hofstra-blue);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#copy-button:hover {
+  background-color: #0b4886;
+  transition-duration: 250ms;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 900px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  .settings-container,
+  .script-container {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+  }
+
+  .script-container {
+    order: 1; /* Place script container in bottom of smaller screns*/
+  }
+}
+
+@media screen and (max-width: 828px) {
   .header-container {
     flex-direction: column;
     text-align: center;
   }
 
   .title {
-    margin: 0 0 0 1rem;
+    margin-top: 0.5rem;
   }
 
   .logo-container {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   nav .nav-link {
     display: block;
     margin: 6px 0;
+  }
+
+  .form-group select {
+    margin-top: 0.5rem; /* Add space above select on small screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .checkbox-group label,
+  .checkbox-group input[type="checkbox"] {
+    flex-basis: 100%; /* Full width for checkboxes and their labels */
   }
 }
