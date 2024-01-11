@@ -26,7 +26,112 @@
   </header>
 
   <main>
+    <div class="content-container">
+      <div class="settings-container">
+        <!-- Job Name -->
+        <div class="form-group">
+          <label for="job-name">Job Name:</label>
+          <input type="text" id="job-name" name="job-name" placeholder="e.g., MyJob">
+        </div>
+        
+        <!-- Output & Error Files -->
+        <div class="form-group">
+          <label for="output-file">Standard Output Path:</label>
+          <input type="text" id="output-file" name="output-file" placeholder="output-%j.out">
+        </div>
+        <div class="form-group">
+          <label for="error-file">Standard Error Path:</label>
+          <input type="text" id="error-file" name="error-file" placeholder="error-%j.err">
+        </div>
+        
+        <!-- Resource Allocation -->
+        <div class="form-group">
+          <label for="num-nodes">Number of Nodes:</label>
+          <input type="number" id="num-nodes" name="num-nodes" min="1">
+        </div>
+        <div class="form-group">
+          <label for="num-cpus">Number of CPU Cores:</label>
+          <input type="number" id="num-cpus" name="num-cpus" min="1">
+        </div>
+        
+        <!-- Memory Amount -->
+        <div class="form-group">
+          <label for="memory-amount">Memory Amount:</label>
+          <input type="number" id="memory-amount" name="memory-amount" min="1">
+          <select id="memory-unit">
+            <option value="MB">MB</option>
+            <option value="GB" selected>GB</option>
+          </select>
+        </div>
+    
+        <!-- GPU Job -->
+        <div class="form-group">
+          <label for="gpu-job">This is a GPU job:</label>
+          <input type="checkbox" id="gpu-job" name="gpu-job">
+        </div>
+        <div class="form-group gpu-specific">
+          <label for="gpu-type">GPU Type:</label>
+          <select id="gpu-type">
+            <option value="A100">A100</option>
+            <option value="A30">A30</option>
+          </select>
+          <label for="num-gpus">Number of GPUs:</label>
+          <input type="number" id="num-gpus" name="num-gpus" min="1" max="16">
+        </div>
+    
+        <!-- Number of Tasks per Core -->
+        <div class="form-group">
+          <label for="ntasks-per-core">Number of Tasks per Core:</label>
+          <input type="number" id="ntasks-per-core" name="ntasks-per-core" min="1">
+        </div>
+    
+        <!-- Number of Tasks per Node -->
+        <div class="form-group">
+          <label for="ntasks-per-node">Number of Tasks per Node:</label>
+          <input type="number" id="ntasks-per-node" name="ntasks-per-node" min="1">
+        </div>
+    
+        <!-- Number of CPUs per Task -->
+        <div class="form-group">
+          <label for="cpus-per-task">Number of CPUs per Task:</label>
+          <input type="number" id="cpus-per-task" name="cpus-per-task" min="1">
+        </div>
+    
+        <!-- Modules to Load -->
+        <div class="form-group">
+          <label for="modules-to-load">Modules to Load:</label>
+          <select id="modules-to-load" multiple>
+            <option value="module1">Module 1</option>
+            <option value="module2">Module 2</option>
+            <!-- ... add other modules ... -->
+          </select>
+        </div>
+    
+        <!-- Commands to Run -->
+        <div class="form-group">
+          <label for="commands">Commands to Run:</label>
+          <textarea id="commands" name="commands" rows="4" placeholder="# Your commands here"></textarea>
+        </div>
+    
+        <!-- Email Notifications -->
+        <div class="form-group">
+          <label>Email Notifications:</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="email-begin" name="email-events" value="BEGIN">
+            <label for="email-begin">Begin</label>
+            <input type="checkbox" id="email-end" name="email-events" value="END">
+            <label for="email-end">End</label>
+            <input type="checkbox" id="email-fail" name="email-events" value="FAIL">
+            <label for="email-fail">Fail</label>
+          </div>
+        </div>
+      </div>
       
+      <div class="script-container">
+        <pre id="slurm-script"></pre>
+        <button id="copy-button">Copy</button>
+      </div>
+    </div>
   </main>
   
   <!-- jQuery -->
@@ -34,3 +139,4 @@
   <!-- Custom script -->
   <script src="script.js"></script>
 </body>
+</html>
