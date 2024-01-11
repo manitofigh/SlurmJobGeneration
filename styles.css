@@ -21,7 +21,7 @@ body {
 header {
   background-color: var(--hofstra-blue);
   color: var(--main-bg-light);
-  padding: 1rem 2%;
+  padding: 0.5rem;
 }
 
 .header-container {
@@ -34,13 +34,14 @@ header {
 
 .logo-container {
   margin: 0 0 0 1rem;
-  color: var(--hofstra-yellow);
+  color: var(--main-bg-light);
   display: flex;
   align-items: center;
 }
 
 .logo-container img {
-  height: 60px;
+  height: 48px;
+  display: block;
 }
 
 .logo-text {
@@ -51,7 +52,7 @@ header {
 
 .title {
   margin: 0 0 0 3rem;
-  color: var(--hofstra-yellow);
+  color: var(--main-bg-light);
   font-weight: bolder;
   font-size: 1.2rem;
 }
@@ -65,7 +66,7 @@ nav .nav-link {
 
 nav .nav-link:hover {
   border-bottom: 2px solid var(--main-bg-light);
-  color: var(--hofstra-yellow);
+  color: var(--main-bg-light);
 }
 
 main {
