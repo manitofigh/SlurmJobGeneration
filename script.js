@@ -19,6 +19,7 @@ $(document).ready(function() {
       let cpusPerTask = $('#cpus-per-task').val();
       let modulesToLoad = $('#modules-to-load').val();
       let commands = $('#commands').val();
+      let emailAddress = $('#email-address').val();
       let emailEvents = $('input[name="email-events"]:checked').map(function() { return this.value; }).get();
   
       // Construct the SLURM script
@@ -60,9 +61,11 @@ $(document).ready(function() {
       if (commands) {
         scriptLines.push(commands);
       }
+      if (emailAddress) {
+        scriptLines.push(`#SBATCH --mail-user=${emailAddress}`)
+      }
       if (emailEvents.length > 0) {
         scriptLines.push(`#SBATCH --mail-type=${emailEvents.join(',')}`);
-        scriptLines.push(`#SBATCH --mail-user=user@example.com`);
       }
   
       // set content ot the script div
@@ -94,7 +97,7 @@ $(document).ready(function() {
         // Reset button text after 2 seconds
         setTimeout(function() {
           $button.text('Copy');
-        }, 2000);
+        }, 1000);
       }).catch(function(error) {
         // copy errors
         console.error('Copy failed', error);
@@ -102,3 +105,4 @@ $(document).ready(function() {
       });
     });
   });
+  
