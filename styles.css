@@ -119,11 +119,17 @@ main {
 .script-container {
   flex: 1;
   max-width: calc(50% - 1rem); 
+  max-height: 75vh;
+  margin: 1.5rem 0 0 0;
   background-color: #fff;
   border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 1rem;
-  position: relative;
+  position: sticky; /* to keep it on top after we scroll down for better visibility*/
+  top: 1rem;
+  z-index: 10;
 }
+
 
 #slurm-script {
   white-space: pre-wrap;
@@ -136,6 +142,7 @@ main {
   color: white;
   padding: 10px 15px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
   position: absolute;
   top: 1rem;
@@ -149,6 +156,11 @@ main {
 
 /* Responsiveness */
 @media screen and (max-width: 900px) {
+
+  main {
+    padding: 0 2rem 2rem 2rem;
+  }
+
   .content-container {
     flex-direction: column;
   }
@@ -161,7 +173,10 @@ main {
   }
 
   .script-container {
-    order: 1; /* Place script container in bottom of smaller screns*/
+    margin-bottom: 1rem;
+    order: -1; /* Place script container on top */
+    top: 0;
+    border-radius: 0 0 12px 12px;
   }
 }
 
