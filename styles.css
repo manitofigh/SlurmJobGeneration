@@ -161,6 +161,10 @@ main {
     padding: 0 2rem 2rem 2rem;
   }
 
+  .title {
+    margin: 0;
+  }
+
   .content-container {
     flex-direction: column;
   }
