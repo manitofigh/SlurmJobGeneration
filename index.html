@@ -46,6 +46,17 @@
           <p class="description">Set the file path and its name to save error messages from the job. It also can use the job ID (%j) for automatic naming.</p>
           <input type="text" id="error-file" name="error-file" placeholder="/your/stderr/path/error-%j.err">
         </div>
+
+        <!-- Walltime Allocation -->
+        <div class="form-group">
+          <label>Walltime:</label>
+          <div class="walltime-container">
+              <input type="number" id="walltime-hours" name="walltime-hours" min="0" placeholder="Hours">
+              <input type="number" id="walltime-minutes" name="walltime-minutes" min="0" max="59" placeholder="Minutes">
+              <input type="number" id="walltime-seconds" name="walltime-seconds" min="0" max="59" placeholder="Seconds">
+          </div>
+          <p class="description">Your job would be forcefully terminated after it hits this time limit. &#10;The timer starts after the job exists the queue and executes.</p>
+        </div>
         
         <!-- Resource Allocation -->
         <div class="form-group">
@@ -69,6 +80,32 @@
             <option value="GB" selected>GB</option>
           </select>
         </div>
+
+        <!-- Test QoS Job -->
+        <div class="form-group">
+          <div class="toggle-container">
+            <label for="test-qos" class="toggle-label">This is a test job:</label>
+            <input type="checkbox" class="checkbox" id="test-qos" name="test-qos">
+          </div>
+          <p class="description">
+            <a href="https://docs.starhpc.hofstra.io/guides/slurm/job-submission.html" target="_blank">Test jobs</a> have higher priority but have some constraint like lower time limit.
+          </p>
+        </div>        
+        
+
+        <!-- Preemptable QoS Job -->
+        <div class="form-group">
+          <div class="toggle-container">
+              <label for="job-preemptable" class="toggle-label">Job is Preemptable:</label>
+              <input type="checkbox" class="checkbox" id="job-preemptable" name="job-preemptable">
+          </div>
+          <p class="description">
+              <a href="https://slurm.schedmd.com/preempt.html" target="_blank">Preemptable jobs</a>
+              are given higher execution priority but can be preempted (stopped) at any time by higher priority jobs if more resource is required.
+              &#10;Preemptable jobs are useful for jobs that can handle premature termination and restart at a checkpoint via checkpointing.
+          </p>
+        </div>
+
 
         <!-- GPU Job -->
         <div class="form-group toggle-container">
@@ -114,8 +151,9 @@
           <label for="modules-to-load">Modules to Load:</label>
           <p class="description">Load any necessary modules for the job. Modules add specific software or environment settings.</p>
           <select id="modules-to-load" multiple>
-            <option value="module1">Module 1</option>
-            <option value="module2">Module 2</option>
+            <option value="module1">Module1</option>
+            <option value="module2">Module2</option>
+            <option value="module3">Module3</option>
             <!-- ... other modules ... -->
           </select>
         </div>
