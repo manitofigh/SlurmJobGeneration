@@ -4,6 +4,7 @@
   --hofstra-blue: #12579a;
   --hofstra-yellow: #ffc309;
   --main-bg-light: #f5fbff;
+  --description-text: #667;
   --font-inter: 'Inter', sans-serif;
 }
 
@@ -97,19 +98,25 @@ main {
 
 .form-group input[type="text"],
 .form-group input[type="number"],
+.form-group input[type="email"],
 .form-group textarea,
 .form-group select {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.checkbox {
+  margin: 0 0 0.5rem 0;
 }
 
 .checkbox-group {
   display: flex;
   flex-wrap: wrap; /* wrap on small screens */
   gap: 10px;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -123,13 +130,34 @@ main {
   margin: 1.5rem 0 0 0;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 1rem;
-  position: sticky; /* to keep it on top after we scroll down for better visibility*/
+  position: sticky; /* to keep it on top after we scroll down. For better visibility and access */
   top: 1rem;
   z-index: 10;
 }
 
+.description {
+  /* font-style: italic; */
+  font-size: 14px;
+  color: var(--description-text);
+  margin-bottom: 0.5rem;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns items to the start of the container */
+}
+
+.toggle-container label {
+  margin-right: 0.5rem; /* Adjust the right margin of the label as needed */
+}
+
+.email-settings {
+  display: none; /* Initially hidden */
+  margin-top: 0.5rem;
+}
 
 #slurm-script {
   white-space: pre-wrap;
@@ -137,7 +165,7 @@ main {
   min-height: 150px;
 }
 
-#copy-button {
+.button-main {
   background: var(--hofstra-blue);
   color: white;
   padding: 10px 15px;
@@ -149,7 +177,7 @@ main {
   right: 1rem;
 }
 
-#copy-button:hover {
+.button-main:hover {
   background-color: #0b4886;
   transition-duration: 250ms;
 }
@@ -180,7 +208,7 @@ main {
     margin-bottom: 1rem;
     order: -1; /* Place script container on top */
     top: 0;
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 6px 6px;
   }
 }
 
@@ -206,11 +234,23 @@ main {
   .form-group select {
     margin-top: 0.5rem; /* Add space above select on small screens */
   }
-}
 
-@media screen and (max-width: 480px) {
-  .checkbox-group label,
-  .checkbox-group input[type="checkbox"] {
-    flex-basis: 100%; /* Full width for checkboxes and their labels */
+  #slurm-script {
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .button-main {
+    padding: 8px 12px;
   }
 }
+
+/* @media screen and (max-width: 480px) {
+  .checkbox-group label,
+  .checkbox-group input[type="checkbox"] {
+    flex-basis: 100%;
+  }
+} */
