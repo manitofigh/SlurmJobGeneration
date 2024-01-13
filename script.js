@@ -5,8 +5,8 @@ $(document).ready(function() {
   
       // input values
       let jobName = $('#job-name').val();
-      let outputFile = $('#output-file').val() || 'output-%j.out';
-      let errorFile = $('#error-file').val() || 'error-%j.err';
+      let outputFile = $('#output-file').val();
+      let errorFile = $('#error-file').val();
       let numNodes = $('#num-nodes').val();
       let numCPUs = $('#num-cpus').val();
       let memoryAmount = $('#memory-amount').val();
@@ -61,48 +61,44 @@ $(document).ready(function() {
       if (commands) {
         scriptLines.push(commands);
       }
-      if (emailAddress) {
-        scriptLines.push(`#SBATCH --mail-user=${emailAddress}`)
-      }
-      if (emailEvents.length > 0) {
-        scriptLines.push(`#SBATCH --mail-type=${emailEvents.join(',')}`);
+      let wantEmail = $('#email-notifications').is(':checked');
+      if (wantEmail && emailAddress) {
+        scriptLines.push(`#SBATCH --mail-user=${emailAddress}`);
+        if (emailEvents.length > 0) {
+          scriptLines.push(`#SBATCH --mail-type=${emailEvents.join(',')}`);
+        }
       }
   
-      // set content ot the script div
-      $('#slurm-script').text(scriptLines.join('\n'));
+     // Set content of the script div
+     $('#slurm-script').text(scriptLines.join('\n'));
     }
-  
+
     // Event handlers for form inputs
     $('input, select, textarea').on('change keyup paste', function() {
       updateSLURMScript();
     });
-  
+
     // Toggle GPU-specific options
     $('#gpu-job').on('change', function() {
-      if ($(this).is(':checked')) {
-        $('.gpu-specific').show();
-      } else {
-        $('.gpu-specific').hide();
-      }
+      $('.gpu-specific').toggle(this.checked);
       updateSLURMScript();
-    }).trigger('change'); 
-  
-    // Copy to clipboard
+    }).trigger('change');
+
+    // Toggle email notification settings
+    $('#email-notifications').on('change', function() {
+      $('.email-settings').toggle(this.checked);
+    });
+
+    // Copy to clipboard functionality
     $('#copy-button').on('click', function() {
       let scriptText = $('#slurm-script').text();
       navigator.clipboard.writeText(scriptText).then(function() {
-
         let $button = $('#copy-button');
         $button.text('Copied!');
-        // Reset button text after 2 seconds
-        setTimeout(function() {
-          $button.text('Copy');
-        }, 1000);
+        setTimeout(function() { $button.text('Copy'); }, 1000);
       }).catch(function(error) {
-        // copy errors
         console.error('Copy failed', error);
         $('#copy-button').text('Failed to copy');
       });
     });
-  });
-  
+});
