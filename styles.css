@@ -120,13 +120,35 @@ main {
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-right: 5px;
+  margin: 0  0.3rem 0 0;
+}
+
+#job-preemptable,
+#test-qos {
+  margin: 0 0.3rem 0.6rem 0;
+}
+
+.description {
+  /* font-style: italic; */
+  font-size: 14px;
+  color: var(--description-text);
+  margin-bottom: 0.5rem;
+}
+
+.walltime-container {
+  display: flex;
+  gap: 10px;
+}
+
+.walltime-container input {
+  flex-grow: 1;
 }
 
 .script-container {
   flex: 1;
   max-width: calc(50% - 1rem); 
   max-height: 75vh;
+  overflow-y: scroll;
   margin: 1.5rem 0 0 0;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -135,13 +157,6 @@ main {
   position: sticky; /* to keep it on top after we scroll down. For better visibility and access */
   top: 1rem;
   z-index: 10;
-}
-
-.description {
-  /* font-style: italic; */
-  font-size: 14px;
-  color: var(--description-text);
-  margin-bottom: 0.5rem;
 }
 
 .toggle-container {
@@ -165,6 +180,56 @@ main {
   min-height: 150px;
 }
 
+/* Base styling for custom dropdown */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+  padding: 6px 8px; /* Smaller padding */
+  font-size: 0.9rem; /* Smaller font size */
+  color: #333; /* Text color */
+}
+
+/* Styling for dropdown options container */
+.custom-dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto; /* Scrollable */
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Styling for each dropdown option */
+.dropdown-toggle {
+  padding: 6px 8px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.dropdown-toggle:hover {
+  background-color: #e1e1e1;
+}
+
+/* Highlight selected options */
+.dropdown-toggle.selected {
+  background-color: #b0c4de; /* Light navy blue background for selected items */
+}
+
+.dropdown-toggle:last-child {
+  border-bottom: none;
+}
+
 .button-main {
   background: var(--hofstra-blue);
   color: white;
@@ -172,14 +237,17 @@ main {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
 }
 
 .button-main:hover {
   background-color: #0b4886;
   transition-duration: 250ms;
+}
+
+#copy-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 /* Responsiveness */
@@ -209,6 +277,8 @@ main {
     order: -1; /* Place script container on top */
     top: 0;
     border-radius: 0 0 6px 6px;
+    max-height: 30vh;
+    overflow-y: scroll;
   }
 }
 
