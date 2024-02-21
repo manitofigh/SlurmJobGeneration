@@ -165,7 +165,7 @@ $(document).ready(function() {
       let scriptText = $('#slurm-script').text();
       navigator.clipboard.writeText(scriptText).then(function() {
         let $button = $('#copy-button');
-        $button.text('Copied!');
+        $button.text('Copied ✓');
         setTimeout(function() { $button.text('Copy'); }, 1000);
       }).catch(function(error) {
         console.error('Copy failed', error);
